@@ -60,7 +60,7 @@ public class JosephProblem {
 
     public static void main(String[] args) {
         JosephProblem josephProblem = new JosephProblem();
-        for (int i = 10; i > 0; i--) {
+        for (int i = 0; i < 3; i++) {
             josephProblem.insertHead(i);
         }
         josephProblem.print();
