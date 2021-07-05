@@ -14,6 +14,7 @@ public class JosephProblem {
         if(head != null){
             newNode.prev = head.prev;
             newNode.next = head;
+            head.prev.next = newNode;
             head.prev = newNode;
             if(head.next == head){
                 head.next = newNode;
@@ -24,6 +25,25 @@ public class JosephProblem {
         }
         head = newNode;
         index++;
+    }
+
+    public JNode deleteHead(Object data){
+        JNode cur = head;
+        for (int i = 1; i < index; i++) {
+            if(cur.data.equals(data)){
+                break;
+            }
+            cur = cur.next;
+        }
+        JNode prev = cur.prev;
+        prev.next = cur.next;
+        JNode next = cur.next;
+        next.prev = cur.prev;
+        if(cur == head){
+            head = cur.next;
+        }
+        index--;
+        return cur;
     }
 
     /**
@@ -41,12 +61,9 @@ public class JosephProblem {
         for (int i = 1; i < pos; i++) {
             cur = cur.next;
         }
-        JNode pre = cur.prev;
-        pre.next = cur.next;
-        cur.next.prev = pre;
-        index--;
+        deleteHead(cur.data);
         print();
-        die(pre.next,pos,end);
+        die(cur.next,pos,end);
     }
 
     public void print(){
@@ -57,14 +74,26 @@ public class JosephProblem {
         }
         System.out.println();
     }
+    public void print(JNode cur){
+        for (int i = 0; i < index; i++) {
+            System.out.print(cur.data+"  ");
+            cur = cur.next;
+        }
+        System.out.println();
+    }
 
     public static void main(String[] args) {
         JosephProblem josephProblem = new JosephProblem();
-        for (int i = 0; i < 3; i++) {
+//        for (int i = 41; i >= 1; i--) {
+//            josephProblem.insertHead(i);
+//        }
+//        josephProblem.print();
+//        josephProblem.die(null,3,2);
+        for (int i = 6; i >= 1; i--) {
             josephProblem.insertHead(i);
         }
         josephProblem.print();
-        josephProblem.die(null,3,1);
+        josephProblem.die(null,5,0);
     }
 }
 
