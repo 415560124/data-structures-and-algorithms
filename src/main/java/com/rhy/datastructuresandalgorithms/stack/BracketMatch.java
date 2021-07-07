@@ -47,6 +47,7 @@ public class BracketMatch {
                         default:
                             isError = true;
                     }
+                    break;
             }
             if(isError){
                 break;
