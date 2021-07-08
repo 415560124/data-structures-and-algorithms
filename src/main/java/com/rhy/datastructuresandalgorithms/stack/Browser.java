@@ -37,6 +37,9 @@ public class Browser {
             backup.push(cur);
             //可以后退标志为true
             isBackup = true;
+            //前进清空
+            advance = new ArrayStack<String>(10);
+            isAdvance = false;
         }
         cur = url;
     }
