@@ -17,6 +17,7 @@ public class ArrayStack<T> {
     }
     /**
      * 入栈
+     * O(1)
      * @param value 值
      */
     public void push(T value){
@@ -31,6 +32,7 @@ public class ArrayStack<T> {
 
     /**
      * 扩容
+     * O(n)
      * @param size 扩容后大小
      */
     public void resize(int size){
@@ -45,6 +47,7 @@ public class ArrayStack<T> {
     }
     /**
      * 出栈
+     * O(1)
      * @return
      */
     public T pop(){

@@ -1,6 +1,5 @@
 package com.rhy.datastructuresandalgorithms.stack;
 
-import org.yaml.snakeyaml.util.ArrayStack;
 
 /**
  * @author: Herion Lemon
@@ -11,13 +10,12 @@ import org.yaml.snakeyaml.util.ArrayStack;
 public class BracketMatch {
     public static void main(String[] args) {
 
-        System.out.println(match("[{}{[())]}]"));
+        System.out.println(match("[{}{[()]}]"));
     }
 
-    public static String match(String str){
-        ArrayStack<Character> stack = new ArrayStack<>(20);
+    public static boolean match(String str){
+        ArrayStack<Character> stack = new ArrayStack<Character>(20);
         char[] chars = str.toCharArray();
-        boolean isError = false;
         for (int i = 0,len = chars.length; i < len; i++) {
             char aChar = chars[i];
             switch (aChar){
@@ -26,33 +24,25 @@ public class BracketMatch {
                 case '(':
                     stack.push(aChar);
                     break;
-                default:
-                    Character pop = stack.pop();
-                    switch (pop){
-                        case '[':
-                            if(aChar != ']'){
-                                isError = true;
-                            }
-                            break;
-                        case '{':
-                            if(aChar != '}'){
-                                isError = true;
-                            }
-                            break;
-                        case '(':
-                            if (aChar != ')'){
-                                isError = true;
-                            }
-                            break;
-                        default:
-                            isError = true;
+                case ']':
+                    if(stack.pop() != '['){
+                        return false;
                     }
                     break;
-            }
-            if(isError){
-                break;
+                case '}':
+                    if(stack.pop() != '{'){
+                        return false;
+                    }
+                    break;
+                case ')':
+                    if(stack.pop() != '('){
+                        return false;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
-        return isError ? "异常" : "正确";
+        return true;
     }
 }
