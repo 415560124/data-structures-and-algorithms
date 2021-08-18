@@ -34,6 +34,7 @@ public class Factorial {
     }
 
     public static void main(String[] args) {
+        System.out.println(1/2);
         System.out.println(rec(5));
         System.out.println(tailRec(5,1));
     }
