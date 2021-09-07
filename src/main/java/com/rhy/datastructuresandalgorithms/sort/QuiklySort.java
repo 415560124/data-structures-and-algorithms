@@ -10,6 +10,7 @@ public class QuiklySort {
     public static void main(String[] args) {
         int[] arr = DataService.getArr();
         qsort(arr,0,arr.length-1);
+//        qsort2(arr,0,arr.length-1);
     }
 
     /**
@@ -55,5 +56,44 @@ public class QuiklySort {
         DataService.show(arr);
         qsort(arr,start,left-1);
         qsort(arr,left+1,end);
+    }
+
+
+
+
+    /**
+     * 快速排序
+     * @param arr 待排序数组
+     * @param start 开始下标
+     * @param end 结束下标
+     */
+    public static void qsort2(int[] arr,int start,int end){
+        if(start >= end){
+            return;
+        }
+        int basicNum = arr[start];
+        int left = start;
+        int right = end;
+        while (left < right){
+            while (left < right && arr[right] >= basicNum){
+                right--;
+            }
+            if(left < right){
+                arr[left] = arr[right];
+                arr[right] = basicNum;
+                left++;
+            }
+            while (left < right && arr[left] <= basicNum){
+                left++;
+            }
+            if(left < right){
+                arr[right] = arr[left];
+                arr[left] = basicNum;
+                right--;
+            }
+        }
+        DataService.show(arr);
+        qsort2(arr,start,left-1);
+        qsort2(arr,left+1,end);
     }
 }

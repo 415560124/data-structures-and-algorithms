@@ -16,4 +16,8 @@ public class DataService {
         System.out.print("排序后：");
         System.out.println(Arrays.toString(arr));
     }
+    public static void show(double[] arr){
+        System.out.print("排序后：");
+        System.out.println(Arrays.toString(arr));
+    }
 }
