@@ -1,6 +1,4 @@
-package com.rhy.datastructuresandalgorithms.sort;
-
-import java.util.Arrays;
+package com.rhy.datastructuresandalgorithms.arithmetic.sort;
 
 /**
  * @author: Rhy
