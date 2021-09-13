@@ -1,4 +1,4 @@
-package com.rhy.datastructuresandalgorithms.sort;
+package com.rhy.datastructuresandalgorithms.arithmetic.sort;
 
 /**
  * @author: Rhy

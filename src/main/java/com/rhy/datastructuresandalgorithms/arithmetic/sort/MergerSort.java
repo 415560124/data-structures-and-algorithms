@@ -1,4 +1,6 @@
-package com.rhy.datastructuresandalgorithms.sort;
+package com.rhy.datastructuresandalgorithms.arithmetic.sort;
+
+import java.util.Random;
 
 /**
  * @author: Rhy
@@ -7,8 +9,16 @@ package com.rhy.datastructuresandalgorithms.sort;
  */
 public class MergerSort {
     public static void main(String[] args) {
-        int[] arr = new int[]{5,3,6,2,4,1,8,9,7};
+        int[] arr = new int[2000000];
+        Random random = new Random();
+        for (int i = 0; i < 2000000; i++) {
+            arr[i] = random.nextInt(2000000);
+        }
+//        int[] arr = new int[]{5,3,6,2,4,1,8,9,7};
+        final long start = System.currentTimeMillis();
         splitAndSort(arr,0,arr.length-1);
+        System.out.println(System.currentTimeMillis() - start);
+        show(arr);
     }
 
     public static void splitAndSort(int[] arr,int start,int end){
@@ -16,26 +26,26 @@ public class MergerSort {
         if (start < end) {
             int mid = (start + end) / 2;
 
-            System.out.print("左：");
-            System.out.print("【"+start+"】");
-            System.out.print("【"+mid+"】");
-            System.out.println();
+//            System.out.print("左：");
+//            System.out.print("【"+start+"】");
+//            System.out.print("【"+mid+"】");
+//            System.out.println();
             //递归拆分左元素
             splitAndSort(arr,start,mid);
 
-            System.out.print("右：");
-            System.out.print("【"+(mid+1)+"】");
-            System.out.print("【"+end+"】");
-            System.out.println();
+//            System.out.print("右：");
+//            System.out.print("【"+(mid+1)+"】");
+//            System.out.print("【"+end+"】");
+//            System.out.println();
             //递归拆分右元素
             splitAndSort(arr,mid+1,end);
 
-            System.out.print("开始合并");
-            System.out.print("【"+start+"】");
-            System.out.print("【"+mid+"】");
-            System.out.print("【"+(mid+1)+"】");
-            System.out.print("【"+end+"】");
-            System.out.println();
+//            System.out.print("开始合并");
+//            System.out.print("【"+start+"】");
+//            System.out.print("【"+mid+"】");
+//            System.out.print("【"+(mid+1)+"】");
+//            System.out.print("【"+end+"】");
+//            System.out.println();
             //开始合并&排序
             mergeAndSort(arr,start,mid,end);
         }
@@ -78,7 +88,7 @@ public class MergerSort {
         for (int i = 0,len = tempArr.length; i < len; i++) {
             arr[i+start] = tempArr[i];
         }
-        show(arr);
+//        show(arr);
     }
     public static void show(int[] arr){
         System.out.print("合并后：");
