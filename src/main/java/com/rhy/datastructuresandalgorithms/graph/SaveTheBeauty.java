@@ -63,6 +63,8 @@ public class SaveTheBeauty {
      * @return
      */
     public boolean bfs(){
+        //重置
+        done = new boolean[m][n];
         //起始点为已经走过
         done[start.x][start.y] = true;
         //队列容量 = 当前所有点 - 不能走的点
@@ -83,8 +85,8 @@ public class SaveTheBeauty {
                 if(end.x == nextx && end.y == nexty){
                     return true;
                 }
-                //检查当前点是否已经走过
-                if (done[nextx][nexty]){
+                //下一个点非能走的点 || 检查当前点是否已经走过
+                if (graph[nextx][nextx] == 1 || done[nextx][nexty]){
                     continue;
                 }
                 done[nextx][nexty] = true;
@@ -93,6 +95,44 @@ public class SaveTheBeauty {
         }
         return false;
     }
+
+    /**
+     * 最小步数
+     */
+//    private int minStep;
+//    public int dfs(){
+//        //重置
+//        done = new boolean[m][n];
+//
+//        minStep = Integer.MAX_VALUE;
+//        dfs(start,0);
+//        return minStep;
+//    }
+//
+//    private void dfs(Point curPoint, int curStep) {
+//        done[curPoint.x][curPoint.y] = true;
+//        if(curPoint.x == end.x && curPoint.y == end.y){
+//            if(minStep > curStep){
+//                minStep = curStep;
+//            }
+//            return;
+//        }
+//        //遍历下一个点判断是否到达妹子的位置
+//        for (Point next: nexts) {
+//            int nextx = curPoint.x + next.x;
+//            int nexty = curPoint.y + next.y;
+//            //判断当前点是否为有效点
+//            if(nextx < 0 || nextx >= m || nexty < 0 || nexty >= n){
+//                continue;
+//            }
+//            //能否走到下一个位置
+//            if (graph[nextx][nextx] == 1 || done[nextx][nexty]){
+//                continue;
+//            }
+//            dfs(new Point(nextx,nexty),curStep + 1);
+//            done[nextx][nexty] = false;
+//        }
+//    }
 
     public void printTable(){
         for (int i = 0; i < graph.length; i++) {
@@ -107,6 +147,7 @@ public class SaveTheBeauty {
         SaveTheBeauty saveTheBeauty = new SaveTheBeauty(5,4,new Point(0,0),new Point(2,3));
         saveTheBeauty.printTable();
         System.out.println(saveTheBeauty.bfs());
+//        System.out.println(saveTheBeauty.dfs());
     }
 }
 
