@@ -147,6 +147,8 @@ public class SaveTheBeauty {
         SaveTheBeauty saveTheBeauty = new SaveTheBeauty(5,4,new Point(0,0),new Point(2,3));
         saveTheBeauty.printTable();
         System.out.println(saveTheBeauty.bfs());
+
+
 //        System.out.println(saveTheBeauty.dfs());
     }
 }
