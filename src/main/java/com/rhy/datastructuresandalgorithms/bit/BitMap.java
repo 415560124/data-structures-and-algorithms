@@ -37,17 +37,34 @@ public class BitMap {
         int byteIndex = num % 8;
 
         //把1挪动到对应下标位置，然后做 &运算，必须两个都为1，则为1
-        int res = bits[bitsIndex] &= 1 << byteIndex;
+        int res = bits[bitsIndex] & (1 << byteIndex);
         if(res == 0){
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
     }
 
+    public void remove(int num){
+        //计算出存储的bit数组下标
+        int bitsIndex = num >> 3;
+        //计算出存储在byte中哪个位置bit
+        int byteIndex = num % 8;
+        //~取反，0变1，1变0
+        bits[bitsIndex] &= ~(1 << byteIndex);
+    }
+
     public static void main(String[] args) {
         BitMap bitMap = new BitMap(100);
         bitMap.add(5);
+        bitMap.add(6);
+        bitMap.add(10);
         System.out.println(bitMap.exist(5));
         System.out.println(bitMap.exist(10));
+        System.out.println(bitMap.exist(11));
+        bitMap.remove(5);
+        System.out.println(bitMap.exist(5));
+        System.out.println(bitMap.exist(6));
+        System.out.println(bitMap.exist(10));
+        System.out.println(Integer.toBinaryString(~(1 << 5)));
     }
 }
